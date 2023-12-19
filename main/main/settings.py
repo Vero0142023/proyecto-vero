@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL    ='usuario.Usuario'
+
 
 # Application definition
 
@@ -38,7 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    
+
     'apps.posts',
+    #'apps.contacto',
+    'apps.usuario',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +62,7 @@ ROOT_URLCONF = 'main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': (os.path.join(os.path.dirname(BASE_DIR),'templates')),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,8 +123,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIR = ('static')
+STATIC_URL = '/static/'
+STATICFILES_DIR = (os.path.join(os.path.dirname(BASE_DIR),'static'))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
