@@ -23,11 +23,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2)na)&q#%vy4ijj1uzstg93nq@^p71_w0po1j65t7p5=6!j@%k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
 
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL    ='usuario.Usuario'
+
+LOGIN_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL='/'
+
+EMAIL_BAQUEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'sm.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'email_a_utilizar@gmail.com'
+EMAIL_HOST_PASSWORD = 'contraseña de tu email'
 
 
 # Application definition
@@ -43,8 +54,9 @@ INSTALLED_APPS = [
     
 
     'apps.posts',
-    #'apps.contacto',
+    'apps.contacto',
     'apps.usuario',
+    'apps.contrib',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +146,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),'media')
+
+SITE_NAME = 'MUNDO VERDE'
