@@ -8,12 +8,13 @@ class RegistroUsuarioForm(UserCreationForm):
 
     class Meta:
         model = Usuario
-        fields = ['username', 'firs_name', 'last_name', 'password', 'password2', 'email', 'imagen']
+        fields = ['username', 'first_name','last_name', 'password', 'password2', 'email', 'imagen']  # 
+
 class ContactoForm(forms.ModelForm):
 
     class Meta:
         model = Contacto
-        fields = ['nombre', 'email', 'telefono', 'website', 'asunto', 'mensaje']
+        fields = ['email']
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Nombre de usuario')

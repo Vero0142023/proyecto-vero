@@ -1,6 +1,6 @@
-#from django.shortcuts import render
-#from .models import Post
-#from .forms import ContactoForm, PostForm
+from django.shortcuts import render
+from .models import Post
+from .forms import ContactoForm, PostForm
 from .forms import RegistroUsuarioForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import CreateView

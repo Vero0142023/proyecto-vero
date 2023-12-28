@@ -56,9 +56,9 @@ def __str__(self):
     return self.texto
 
 #Categoria
-class Categoria(models.Model):
-    nombre = models.CharField(max_length=30, null=False)
+#class Categoria(models.Model):
+    #nombre = models.CharField(max_length=30, null=False)
 
-    def _str_(self):
-        return self.nombre
+    #def _str_(self):
+        #return self.nombre
 

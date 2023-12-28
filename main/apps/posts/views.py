@@ -40,15 +40,16 @@ class PostDetailView(DetailView):
             return self.render_to_response(context)
 
 
+#class PostCreateView(LoginRequiredMixin, CreateView):
 
-
-class PostCreateView(LoginRequiredMixin, CreateView):
-
-class CategoriaCreateView(LoginRequiredMixin, CreateView):
+#class CategoriaCreateView(LoginRequiredMixin, CreateView):
 
 class PostListView(ListView):
+    model = Post
+    template_name = "posts/post_list.html"
+    context_objet_name = 'posts'
 
-class CategoriaDeleteView(LoginRequiredMixin, DeleteView):
+#class CategoriaDeleteView(LoginRequiredMixin, DeleteView):
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
@@ -63,18 +64,18 @@ class PostDeleteView(DeleteView):
     success_url = reverse_lazy('apps.posts:posts')
 
 
-class ComentarioCreateView(LoginRequiredMixin, CreateView):
+#class ComentarioCreateView(LoginRequiredMixin, CreateView):
 
-class PostDetailView(DeleteView):
+#class PostDetailView(DeleteView):
 
-class PostCreateView(CreateView):
+#class PostCreateView(CreateView):
 
-class CategoriaCreateView(CreateView):
-
-
+#class CategoriaCreateView(CreateView):
 
 
-class CategoriaListlView(ListView):
+
+
+class CategoriaListView(ListView):
     model = Categoria
     template_name = "posts/categoria_list.html"
     context_objet_name = 'categorias'

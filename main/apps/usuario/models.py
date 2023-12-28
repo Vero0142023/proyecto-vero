@@ -9,3 +9,10 @@ class Usuario(AbstractUser):
 
     def get_absolute_url(self):
         return reverse('index')
+
+
+class Contacto(AbstractUser):
+    texto = models.TextField("email")
+
+class Post(AbstractUser):
+    texto = models.TextField
