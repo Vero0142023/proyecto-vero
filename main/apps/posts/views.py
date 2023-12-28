@@ -97,6 +97,13 @@ class CategoriaCreateView(CreateView):
     form_class = NuevaCategoriaForm
     template_name = 'posts/crear_categoria.html'
 
+    def get_success_url(self):
+        nex_url = self.request.GET.get('next')
+        if nex_url:
+            return nex_url
+        else:
+            return reverse_lazy('apps.posts:post_create') 
+
 class ComentarioCreateView(CreateView):
     model = Comentario
     form_class = ComentarioForm

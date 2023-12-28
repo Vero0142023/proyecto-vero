@@ -13,3 +13,17 @@
 
     {% for i in posts %}
         <br>
+        <li>{{ i.titulo }}
+        <li>{{ i.subtitulo }}
+        <li>{{i.categoria }}
+        <br>
+        <a id="boton_post" href="{% url 'ápps.posts:post_individual' i.id %}">
+            Ingresa a este post
+        </a>
+        
+        {% empty %}
+        <h1>No hay registros<h1>
+    {% endfor %}
+
+</div>
+{% endblock %}
