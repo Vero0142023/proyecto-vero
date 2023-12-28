@@ -46,8 +46,8 @@ class PostDetailView(DetailView):
 
 class PostListView(ListView):
     model = Post
-    template_name = "posts/post_list.html"
-    context_objet_name = 'posts'
+    template_name = "posts/post.html"
+    context_objet_name = "posts"
 
 #class CategoriaDeleteView(LoginRequiredMixin, DeleteView):
 
