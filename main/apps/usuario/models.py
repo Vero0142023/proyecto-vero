@@ -15,15 +15,15 @@ class Contacto(AbstractUser):
     texto = models.EmailField(null=False, blank=False)
     #null=True, blank=True, upload_to='contacto'
 
-    def get_absolute_url(self):
-        return reverse('contacto')
+    #def get_absolute_url(self):
+        #return reverse('contacto')
 
 class Post(AbstractUser):
     texto = models.TextField(null=False, blank=False)
     #null=False, upload_to='post'
 
-    def get_absolute_url(self):
-        return reverse('post')
+    #def get_absolute_url(self):
+        #return reverse('post')
 
 class PostGroup(AbstractUser):
     texto = models.TextField()
