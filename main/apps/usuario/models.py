@@ -25,6 +25,6 @@ class Post(AbstractUser):
     def get_absolute_url(self):
         return reverse('post')
 
-class PostGoup(AbstractUser):
+class PostGroup(AbstractUser):
     texto = models.TextField()
 #null=False
