@@ -2,6 +2,7 @@ from .models import Usuario
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from .models import Contacto, Post
+from django.contrib.auth import authenticate, login
 
 
 class RegistroUsuarioForm(UserCreationForm):
