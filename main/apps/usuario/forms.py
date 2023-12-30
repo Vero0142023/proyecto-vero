@@ -1,7 +1,7 @@
 from .models import Usuario
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .models import Contacto, Post
+#from .models import Contacto, Post
 from django.contrib.auth import authenticate, login
 
 
@@ -11,11 +11,11 @@ class RegistroUsuarioForm(UserCreationForm):
         model = Usuario
         fields = ['username', 'first_name','last_name', 'password', 'password2', 'email', 'imagen']  # 
 
-class ContactoForm(forms.ModelForm):
+#class ContactoForm(forms.ModelForm):
 
-    class Meta:
-        model = Contacto
-        fields = ['email']
+    #class Meta:
+        #model = Contacto
+        #ields = ['email']
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Nombre de usuario')
@@ -30,10 +30,10 @@ class LoginForm(forms.Form):
             login(request, user)
 
 
-class PostForm(forms.ModelForm):
-    class Meta:
-        model = Post
-        fields = '__all__' 
-        widgets = {
-            'fecha_creacion': forms.SelectDateWidget()
-        }
+#class PostForm(forms.ModelForm):
+    #class Meta:
+        #model = Post
+        #fields = '__all__' 
+        #widgets = {
+            #'fecha_creacion': forms.SelectDateWidget()
+        #}
