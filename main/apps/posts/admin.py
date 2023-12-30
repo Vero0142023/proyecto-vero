@@ -5,7 +5,7 @@ from .models import Categoria, Post
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'titulo', 'resumen', 'contenido', 'fecha_publicacion',
+    list_display = ('id', 'titulo', 'subtitulo', 'resumen', 'contenido', 'fecha_publicacion',
                     'activo', 'categoria', 'image', 'publicado', 'editor')
 
 admin.site.register(Categoria)

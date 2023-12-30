@@ -2,7 +2,7 @@ from django import forms
 from .models import Post, Categoria  #Comentario, 
 
 
-class PostForm(forms.ModelForm):
+class CrearPostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = '__all__'

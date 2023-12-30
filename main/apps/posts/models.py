@@ -16,14 +16,14 @@ class Categoria(models.Model):
 class Post(models.Model):
     titulo = models.CharField(max_length=30, null=False)
     subtitulo = models.CharField(max_length=30, null=True, blank=True)
-    resumen = models.TextField(null=False)
-    fecha = models.DateTimeField(auto_now_add=True)
-    texto = models.TextField(null=False)
+    resumen = models.TextField(null=True)
+    contenido = models.TextField(null=False)
+    fecha_publicacion = models.DateTimeField(auto_now_add=True)
     activo = models.BooleanField(default=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True)
-    imagen = models.ImageField(null=True, blank=True, upload_to='media', default='static/post_default.png')
+    image = models.ImageField(null=True, blank=True, upload_to='media', default='static/post_default.png')
     publicado = models.DateTimeField(default=timezone.now)
-    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+    editor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
 
     class Meta:
         ordering = ('-publicado',)
