@@ -10,11 +10,7 @@ from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 
 # Create your views here.
-#def cambio(request):
-    #return render(request, 'cambio.html')
 
-#def mi_vista(request):
-    #return render(request, 'mi_vista.html')
 
 class PostDetailView(DetailView):
     model = Post
@@ -45,9 +41,6 @@ class PostDetailView(DetailView):
 #class PostCreateView(LoginRequiredMixin, CreateView):
 
 #class CategoriaCreateView(LoginRequiredMixin, CreateView):
-
-
-
 
 
 
@@ -118,7 +111,6 @@ class PostsPorCategoriaView(ListView):
 
 
 
-
 class CategoriaListView(ListView):
     model = Categoria
     template_name = "posts/categoria_list.html"
@@ -150,7 +142,6 @@ class CategoriaCreateView(LoginRequiredMixin, CreateView):
         else:
             return reverse_lazy('apps.posts:post_create') 
 
-"""
 class ComentarioCreateView(CreateView):
     model = Comentario
     form_class = ComentarioForm
@@ -183,4 +174,4 @@ class ComentarioDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_success_url(self):
         return reverse('apps.posts:post_individual', args=[self.object.posts.id])
-"""
+
