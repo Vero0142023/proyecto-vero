@@ -38,7 +38,7 @@ class PostDetailView(DetailView):
 #class CategoriaCreateView(LoginRequiredMixin, CreateView):
 class PostListView(ListView):
     model = Post
-    template_name = "posts/post.html"
+    template_name = "posts/posts.html"
     context_objet_name = "posts"
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -136,7 +136,7 @@ class ComentarioUpdateView(LoginRequiredMixin, UpdateView):
         if next_url:
             return next_url
         else:
-            return reverse('apps.posts:post_individual', args=[self.object.posts.id])
+            return reverse('apps.posts:post_detalle', args=[self.object.posts.id])
 class ComentarioDeleteView(LoginRequiredMixin, DeleteView):
     model = Comentario
     template_name = 'comentario/comentario_confirm_delete.html'
