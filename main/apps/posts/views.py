@@ -1,13 +1,15 @@
-from .models import Post, Comentario, Categoria
-from .forms import ComentarioForm, CrearPostForm, NuevaCategoriaForm
+from .models import Post, Categoria
+from apps.comentario.models import Comentario
+from .forms import CrearPostForm, NuevaCategoriaForm
+from apps.comentario.forms import ComentarioForm
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 from django.shortcuts import redirect
-from django.urls import *
+from django.urls import reverse_lazy, reverse
+from django.contrib import messages
 
 # Create your views here.
-
 
 class PostDetailView(DetailView):
     model = Post
@@ -15,7 +17,6 @@ class PostDetailView(DetailView):
     context_objet_name = "posts"
     pk_url_kwarg = "id"
     queryset = Post.objects.all()
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = ComentarioForm()
@@ -33,19 +34,12 @@ class PostDetailView(DetailView):
             context = self.get_context_data(**kwargs)
             context['form'] = form
             return self.render_to_response(context)
-
-
 #class PostCreateView(LoginRequiredMixin, CreateView):
-
 #class CategoriaCreateView(LoginRequiredMixin, CreateView):
-
-
-
 class PostListView(ListView):
     model = Post
     template_name = "posts/post.html"
     context_objet_name = "posts"
-
     def get_queryset(self):
         queryset = super().get_queryset()
         orden = self.request.GET.get('orden')
@@ -56,7 +50,6 @@ class PostListView(ListView):
         elif orden == 'alfabetico':
             queryset = queryset.order_by('titulo')
         return queryset
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['orden'] = self.request.GET.get('orden', 'reciente')
@@ -74,98 +67,78 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'posts/modificar_post.html'
     success_url = reverse_lazy('apps.posts:posts')
 
+    def get_success_url(self):
+            messages.success(self.request, '¡Artículo modificado con éxito!')
+            return reverse_lazy('apps.posts:posts')
+
 class PostDeleteView(DeleteView):
     model = Post
     template_name = 'posts/eliminar_post.html'
-    success_url = reverse_lazy('apps.posts:posts')
+
+    def get_success_url(self):
+        messages.success(self.request, '¡Borrado con éxito!')
+        return reverse_lazy('apps.posts:posts')
 
 
 #class ComentarioCreateView(LoginRequiredMixin, CreateView):
-
 #class PostDetailView(DeleteView):
-    
-
-
-    
 class PostsPorCategoriaView(ListView):
     model = Post
     template_name = 'posts/posts_por_categoria.html'
     context_object_name = 'posts'
-
     def get_queryset(self):
         return Post.objects.filter(categoria_id=self.kwargs['pk'])
-
-
-
-
-
-
 
 class CategoriaListView(ListView):
     model = Categoria
     template_name = "posts/categoria_list.html"
     context_objet_name = 'categorias'
 
-class CategoriaDeleteView(DeleteView):
+class CategoriaDeleteView(LoginRequiredMixin, DeleteView):
     model = Categoria
     template_name = "posts/categoria_confirm_delete.html"
     context_objet_name = reverse_lazy('apps.posts:categoria_list')
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = CrearPostForm
     template_name = 'posts/crear_post.html'
-    success_url = reverse_lazy('apps.posts:posts')
 
-
-class CategoriaCreateView(CreateView):
+    def get_success_url(self):
+            messages.success(self.request, '¡Artículo creado con éxito!')
+            return reverse_lazy('apps.posts:categoria_list')
+class CategoriaCreateView(LoginRequiredMixin, CreateView):
     model = Categoria
     form_class = NuevaCategoriaForm
     template_name = 'posts/crear_categoria.html'
-
     def get_success_url(self):
         nex_url = self.request.GET.get('next')
         if nex_url:
             return nex_url
         else:
             return reverse_lazy('apps.posts:post_create') 
-
 class ComentarioCreateView(CreateView):
     model = Comentario
     form_class = ComentarioForm
     template_name = 'comentario/agregarComentario.html'
     success_url = 'comentario/comentarios/'
-
     def form_valid(self, form):
         form.instance.usuario = self.request.user
         form.instance.posts_id = self.kwargs['posts_id']
         return super().form_valid(form)
     
-
-
-
 class ComentarioUpdateView(LoginRequiredMixin, UpdateView):    
     model = Comentario
     form_class = ComentarioForm
     template_name = 'comentario/comentario_form.html'
-
     def get_success_url(self):
         next_url = self.request.GET.get('next')
         if next_url:
             return next_url
         else:
             return reverse('apps.posts:post_individual', args=[self.object.posts.id])
-
 class ComentarioDeleteView(LoginRequiredMixin, DeleteView):
     model = Comentario
     template_name = 'comentario/comentario_confirm_delete.html'
-
     def get_success_url(self):
         return reverse('apps.posts:post_individual', args=[self.object.posts.id])
-
-
-#def cambio(request):
-    #return render(request, 'cambio.html')
-
-#def mi_vista(request):
-    #return render(request, 'mi_vista.html')
