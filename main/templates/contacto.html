@@ -310,3 +310,37 @@
 </body>
 
 </html>
+
+
+
+
+<div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+    <div class="navbar-nav ml-auto py-0">
+        <a href="{% url 'index' %}" class="nav-item nav-link active">Inicio</a>
+        <a href="a{% url 'about' %}" class="nav-item nav-link">Nosotros</a>
+        <a href="{% url 'energia' %}" class="nav-item nav-link">Energías Renovables</a>
+        <a href="{% url 'educacion' %}" class="nav-item nav-link">Educación Medio Ambiental</a>
+        <a href="{% url 'economia' %}" class="nav-item nav-link">Economía Circular</a>s
+        <a href="{% url 'cambio' %}" class="nav-item nav-link">Cambio Climático</a>
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+            <div class="dropdown-menu border-0 rounded-0 m-0">
+                <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                <a href="single.html" class="dropdown-item">Blog Detail</a>
+                <a href="destination.html" class="dropdown-item">Destination</a>
+                <a href="guide.html" class="dropdown-item">Travel Guides</a>
+                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'apps.posts:posts'%}">Posts</a></li>
+            <li><a href="{% url 'apps.contacto:contacto'%}">Contacto</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'apps.usuario:logout'%}">Logout</a></li>
+            <div class="dropdown-content">
+            
+            {% else %}
+            <li><a href="{% url 'apps.usuario:login'%}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>

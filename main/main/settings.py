@@ -95,7 +95,7 @@ TEMPLATES = [
     },
 ]
 
-TEMPLATES_DIR = DIR = [BASE_DIR / 'templates']
+TEMPLATES_DIR = [BASE_DIR / 'templates',]
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
