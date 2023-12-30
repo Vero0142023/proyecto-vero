@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<title>{% block title %} INICIO {% endblock title %}</title>
+<title> {% block title %} Mundo Verde {% endblock title %} </title>
+
+
+
 
 <html lang="es-ar">
 
 {% block contenido %}  
 
+<i href="{% url 'index' %}">Homework</i>
 
     <head>
         <meta charset="utf-8">
@@ -16,17 +20,17 @@
         <meta content="Free HTML Templates" name="description">
     
     <!-- Favicon -->
-    <a rel="icon" type="img/png" src="{% main '/static/img/logo.png' %}">
+    <link rel="icon" type="img/png" href="main/static/img/logo.png">
 
     <!-- Google Web Fonts -->
-    <a rel="preconnect" src="{% https://fonts.gstatic.com %}">
-    <a href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="{% https://fonts.gstatic.com %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <a href="{% lib/owlcarousel/assets/owl.carousel.min.css %}" rel="stylesheet"/>
+    <link href="{% lib/owlcarousel/assets/owl.carousel.min.css %}" rel="stylesheet"/>
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css%}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
@@ -40,7 +44,7 @@
             <div class="row">
                 <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
-                        <p><i class=" fa fa-envelope mr-2"></i>info@example.com</p>
+                        <p><i class=" fa fa-envelope mr-2"></i>info@example.com</p></i>
                         <p class="text-body px-3">|</p>
                         <p><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</p>
                     </div>

@@ -63,6 +63,10 @@ INSTALLED_APPS = [
 
 ]
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -90,6 +94,8 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATES_DIR = DIR = [BASE_DIR / 'templates']
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
@@ -140,7 +146,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIR = (os.path.join(os.path.dirname(BASE_DIR),'main.static.img'))
+STATICFILES_DIR = [BASE_DIR / 'static']
+STATIC_ROOT = '/Users/Lenovo/Desktop/PROGRAMACION-INFO/PROYECTO VERO/main/static'
+#(os.path.join(os.path.dirname(BASE_DIR),'main.static.img'))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
