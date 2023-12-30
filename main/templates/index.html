@@ -1,26 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
 
-<!DOCTYPE html>
+<title>{% block title %} INICIO {% endblock title %}</title>
+
 <html lang="es-ar">
+
+{% block contenido %}  
+
+
+    <head>
+        <meta charset="utf-8">
     
-<head>
-    <meta charset="utf-8">
-    <title>MUNDO VERDE</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free HTML Templates" name="keywords">
+        <meta content="Free HTML Templates" name="description">
     
     <!-- Favicon -->
-    <link rel="icon" type="img/png" href=".main/templates/img/ver.png">
+    <a rel="icon" type="img/png" src="{% main '/static/img/logo.png' %}">
 
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <a rel="preconnect" src="{% https://fonts.gstatic.com %}">
+    <a href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="{% lib/owlcarousel/assets/owl.carousel.min.css %}" rel="stylesheet">
+    <a href="{% lib/owlcarousel/assets/owl.carousel.min.css %}" rel="stylesheet"/>
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css%}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
@@ -106,7 +112,7 @@
         <div id="header-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="img/natu.jpg" alt="Image">
+                    <img class="w-100" src="{% main/static/img/natu.jpg %}" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">ss
                             <h4 class="text-white text-uppercase mb-md-3">NOTICIAS</h4>
@@ -754,6 +760,10 @@
     </div>
     <!-- Blog End -->
 
+
+
+
+{% endblock %}
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
