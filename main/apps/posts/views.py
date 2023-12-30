@@ -1,10 +1,13 @@
-from .models import Post, Comentario, Categoria
-from .forms import ComentarioForm, CrearPostForm, NuevaCategoriaForm
+from .models import Post, Categoria
+from apps.comentario.models import Comentario
+from .forms import CrearPostForm, NuevaCategoriaForm
+from apps.comentario.forms import ComentarioForm
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 from django.shortcuts import redirect
-from django.urls import *
+from django.urls import reverse_lazy, reverse
+from django.contrib import messages
 
 # Create your views here.
 
@@ -65,6 +68,7 @@ class PostListView(ListView):
 
 
 
+
 #class CategoriaDeleteView(LoginRequiredMixin, DeleteView):
 
 
@@ -73,11 +77,18 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     form_class = CrearPostForm
     template_name = 'posts/modificar_post.html'
     success_url = reverse_lazy('apps.posts:posts')
+    
+    def get_success_url(self):
+            messages.success(self.request, '¡Artículo modificado con éxito!')
+            return reverse_lazy('apps.posts:posts')
 
 class PostDeleteView(DeleteView):
     model = Post
     template_name = 'posts/eliminar_post.html'
-    success_url = reverse_lazy('apps.posts:posts')
+    
+    def get_success_url(self):
+        messages.success(self.request, '¡Borrado con éxito!')
+        return reverse_lazy('apps.posts:posts')
 
 
 #class ComentarioCreateView(LoginRequiredMixin, CreateView):
@@ -86,7 +97,7 @@ class PostDeleteView(DeleteView):
     
 
 
-    
+
 class PostsPorCategoriaView(ListView):
     model = Post
     template_name = 'posts/posts_por_categoria.html'
@@ -100,25 +111,26 @@ class PostsPorCategoriaView(ListView):
 
 
 
-
 class CategoriaListView(ListView):
     model = Categoria
     template_name = "posts/categoria_list.html"
     context_objet_name = 'categorias'
 
-class CategoriaDeleteView(DeleteView):
+class CategoriaDeleteView(LoginRequiredMixin, DeleteView):
     model = Categoria
     template_name = "posts/categoria_confirm_delete.html"
     context_objet_name = reverse_lazy('apps.posts:categoria_list')
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = CrearPostForm
     template_name = 'posts/crear_post.html'
-    success_url = reverse_lazy('apps.posts:posts')
+    
+    def get_success_url(self):
+            messages.success(self.request, '¡Artículo creado con éxito!')
+            return reverse_lazy('apps.posts:categoria_list')
 
-
-class CategoriaCreateView(CreateView):
+class CategoriaCreateView(LoginRequiredMixin, CreateView):
     model = Categoria
     form_class = NuevaCategoriaForm
     template_name = 'posts/crear_categoria.html'
@@ -163,9 +175,3 @@ class ComentarioDeleteView(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         return reverse('apps.posts:post_individual', args=[self.object.posts.id])
 
-
-#def cambio(request):
-    #return render(request, 'cambio.html')
-
-#def mi_vista(request):
-    #return render(request, 'mi_vista.html')
