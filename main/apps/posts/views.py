@@ -7,11 +7,7 @@ from django.shortcuts import redirect
 from django.urls import *
 
 # Create your views here.
-#def cambio(request):
-    #return render(request, 'cambio.html')
 
-#def mi_vista(request):
-    #return render(request, 'mi_vista.html')
 
 class PostDetailView(DetailView):
     model = Post
@@ -42,9 +38,6 @@ class PostDetailView(DetailView):
 #class PostCreateView(LoginRequiredMixin, CreateView):
 
 #class CategoriaCreateView(LoginRequiredMixin, CreateView):
-
-
-
 
 
 
@@ -169,3 +162,10 @@ class ComentarioDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_success_url(self):
         return reverse('apps.posts:post_individual', args=[self.object.posts.id])
+
+
+#def cambio(request):
+    #return render(request, 'cambio.html')
+
+#def mi_vista(request):
+    #return render(request, 'mi_vista.html')
