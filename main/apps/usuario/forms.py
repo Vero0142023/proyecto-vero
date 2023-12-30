@@ -11,11 +11,6 @@ class RegistroUsuarioForm(UserCreationForm):
         model = Usuario
         fields = ['username', 'first_name','last_name', 'password', 'password2', 'email', 'imagen']  # 
 
-#class ContactoForm(forms.ModelForm):
-
-    #class Meta:
-        #model = Contacto
-        #ields = ['email']
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Nombre de usuario')
@@ -37,3 +32,9 @@ class LoginForm(forms.Form):
         #widgets = {
             #'fecha_creacion': forms.SelectDateWidget()
         #}
+            
+#class ContactoForm(forms.ModelForm):
+
+    #class Meta:
+        #model = Contacto
+        #ields = ['email']

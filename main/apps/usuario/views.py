@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Usuario     #Post,
 from .forms import RegistroUsuarioForm
-from ..post.models import Post
+from ..posts.models import Post
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import *
@@ -11,6 +11,9 @@ from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import Group
 from django.views.generic import CreateView, ListView, DeleteView
 from ..comentario.models import Comentario
+
+
+# Create your views here.
 
 class RegistrarUsuario(CreateView):
     template_name = 'registration/registrar.html'
@@ -83,7 +86,7 @@ class MyPasswordResetView(PasswordResetView):
 
 #from django.views import *
 #from .forms import ContactoForm, PostForm
-# Create your views here.
+
 
 
         #def get_success_url(self):

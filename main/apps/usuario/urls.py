@@ -1,6 +1,5 @@
 from django.urls import path
-#from django import views
-from .views import*
+from .views import *
 from django.contrib.auth import views as auth_views
 
 app_name = 'app.usuario'
@@ -18,3 +17,6 @@ urlpatterns = [
     path('usuario/<int:pk>/eliminar/', UsuarioDeleteView.as_view(), name='usuario_delete'),
 
 ]
+
+
+#from django import views
