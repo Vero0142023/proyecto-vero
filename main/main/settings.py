@@ -30,8 +30,8 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL    ='usuario.Usuario'
 
-LOGIN_REDIRECT_URL='/'
-LOGOUT_REDIRECT_URL='/'
+LOGIN_REDIRECT_URL= '/'
+LOGOUT_REDIRECT_URL= '/'
 
 EMAIL_BAQUEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'sm.gmail.com'
