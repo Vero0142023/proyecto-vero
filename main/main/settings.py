@@ -57,6 +57,10 @@ INSTALLED_APPS = [
     'apps.contacto',
     'apps.usuario',
     'apps.comentario',
+
+    "crispy_forms",
+    "crispy_bootstrap5",
+
 ]
 
 MIDDLEWARE = [
@@ -74,7 +78,7 @@ ROOT_URLCONF = 'main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': (os.path.join(os.path.dirname(BASE_DIR),'main.templates')),
+        'DIRS': (os.path.join(os.path.dirname(BASE_DIR),'main.template')),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -145,6 +149,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),'media')
+MEDIA_ROOT = '/Users/Lenovo/Desktop/PROGRAMACION-INFO/PROYECTO VERO/main/media'
 
 SITE_NAME = 'MUNDO VERDE'
